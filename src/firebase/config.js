@@ -2,7 +2,7 @@ import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firebase";
 
 const firebaseConfig = {
- 
+  
 };
 
 // Initialize Firebase
