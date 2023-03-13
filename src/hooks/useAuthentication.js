@@ -18,9 +18,31 @@ export const useAuthentication = () => {
         if (cancelled) return;
     }
 
-    const login = async () => {
+    const login = async (data) => {
+        checkIfIsCancelled();
 
-        //await signInWithEmailAndPassword(auth, "davidson031@hotmail.com", "123456");
+        setLoading(true);
+        setError(false);
+
+        try {
+
+            await signInWithEmailAndPassword(auth, data.email, data.password);
+            setLoading(false);
+
+        } catch (error) {
+            let systemErrorMessage;
+
+            if (error.message.includes("user-not-found")) {
+                systemErrorMessage = "Usuário não encontrado";
+            } else if (error.message.includes("wrong-password")) {
+                systemErrorMessage = "Senha incorreta";
+            } else {
+                systemErrorMessage = "Ocorreu um erro, por favor tente novamente";
+            }
+
+            setError(systemErrorMessage);
+            setLoading(false);
+        }
 
     }
     const createUser = async (data) => {
