@@ -1,8 +1,6 @@
 import { useState, useEffect } from "react";
 import { db } from "../firebase/config";
 import { collection, query, orderBy, onSnapshot, where } from "firebase/firestore";
-import { async } from "@firebase/util";
-import { Await } from "react-router-dom";
 
 
 
@@ -53,7 +51,7 @@ export const useFetchDocuments = (docCollection, search = null, uid = null) => {
 
         loadData();
 
-    }, [docCollection, search, uid, cancelled]);
+    }, [docCollection, documents, search, uid, cancelled]);
 
 
     useEffect(() => {
