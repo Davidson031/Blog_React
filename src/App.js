@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Home from "./pages/home/Home";
 import About from "./pages/about/About";
 import Register from "./pages/register/Register";
+import Search from "./pages/Search/Search";
 import Login from "./pages/login/Login";
 import NavBar from "../src/components/Navbar";
 import Footer from "../src/components/Footer";
@@ -44,6 +45,7 @@ function App() {
               <Route path='/register' element={ !user ? <Register /> : <Navigate to="/" /> } />
               <Route path='/posts/create' element={ user ? <CreatePost /> : <Navigate to="/login" /> } />
               <Route path='/dashboard' element={ user ? <Dashboard /> : <Navigate to="/login" /> } />
+              <Route path='search' element = {  <Search /> }/>
             </Routes >
           </div>
           <Footer />
